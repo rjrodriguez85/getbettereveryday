@@ -75,7 +75,8 @@ class To_dosController extends BaseController{
 		$this->view->report_layout = "report_layout.php";
 		$this->view->report_paper_size = "A4";
 		$this->view->report_orientation = "portrait";
-		$this->render_view("to_dos/list.php", $data); //render the full page
+		$view_name = (is_ajax() ? "to_dos/ajax-list.php" : "to_dos/list.php");
+		$this->render_view($view_name, $data);
 	}
 	/**
      * View record detail 

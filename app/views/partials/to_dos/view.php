@@ -45,18 +45,14 @@ $show_export_btn = $this->show_export_btn;
                             <table class="table table-hover table-borderless table-striped">
                                 <!-- Table Body Start -->
                                 <tbody class="page-data" id="page-data-<?php echo $page_element_id; ?>">
-                                    <tr  class="td-todos_id">
-                                        <th class="title"> <?php print_lang('todos_id'); ?>: </th>
-                                        <td class="value"> <?php echo $data['todos_id']; ?></td>
-                                    </tr>
                                     <tr  class="td-ntbd">
-                                        <th class="title"> <?php print_lang('ntbd'); ?>: </th>
+                                        <th class="title"> <?php print_lang('needs_to_be_done'); ?>: </th>
                                         <td class="value">
                                             <span  data-value="<?php echo $data['ntbd']; ?>" 
                                                 data-pk="<?php echo $data['todos_id'] ?>" 
                                                 data-url="<?php print_link("to_dos/editfield/" . urlencode($data['todos_id'])); ?>" 
                                                 data-name="ntbd" 
-                                                data-title="Enter Ntbd" 
+                                                data-title="Enter Needs to be done" 
                                                 data-placement="left" 
                                                 data-toggle="click" 
                                                 data-type="text" 
@@ -105,41 +101,11 @@ $show_export_btn = $this->show_export_btn;
                                     </tr>
                                     <tr  class="td-start_date">
                                         <th class="title"> <?php print_lang('start_date'); ?>: </th>
-                                        <td class="value">
-                                            <span  data-flatpickr="{ minDate: '', maxDate: ''}" 
-                                                data-value="<?php echo $data['start_date']; ?>" 
-                                                data-pk="<?php echo $data['todos_id'] ?>" 
-                                                data-url="<?php print_link("to_dos/editfield/" . urlencode($data['todos_id'])); ?>" 
-                                                data-name="start_date" 
-                                                data-title="Enter Start Date" 
-                                                data-placement="left" 
-                                                data-toggle="click" 
-                                                data-type="flatdatetimepicker" 
-                                                data-mode="popover" 
-                                                data-showbuttons="left" 
-                                                class="is-editable" >
-                                                <?php echo $data['start_date']; ?> 
-                                            </span>
-                                        </td>
+                                        <td class="value"> <?php echo $data['start_date']; ?></td>
                                     </tr>
                                     <tr  class="td-end_date">
                                         <th class="title"> <?php print_lang('end_date'); ?>: </th>
-                                        <td class="value">
-                                            <span  data-flatpickr="{ minDate: '', maxDate: ''}" 
-                                                data-value="<?php echo $data['end_date']; ?>" 
-                                                data-pk="<?php echo $data['todos_id'] ?>" 
-                                                data-url="<?php print_link("to_dos/editfield/" . urlencode($data['todos_id'])); ?>" 
-                                                data-name="end_date" 
-                                                data-title="Enter End Date" 
-                                                data-placement="left" 
-                                                data-toggle="click" 
-                                                data-type="flatdatetimepicker" 
-                                                data-mode="popover" 
-                                                data-showbuttons="left" 
-                                                class="is-editable" >
-                                                <?php echo $data['end_date']; ?> 
-                                            </span>
-                                        </td>
+                                        <td class="value"> <?php echo $data['end_date']; ?></td>
                                     </tr>
                                 </tbody>
                                 <!-- Table Body End -->

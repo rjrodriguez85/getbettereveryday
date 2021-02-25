@@ -8,7 +8,7 @@ define("ROOT", str_replace("\\", "/", dirname(__FILE__)) . "/");
 // return the application directory name.
 define("ROOT_DIR_NAME", basename(ROOT));
 
-define("SITE_NAME", "getbettereverday");
+define("SITE_NAME", "getbettereveryday");
 
 
 // Get Site Address Dynamically
@@ -20,7 +20,7 @@ $site_addr = rtrim($site_addr, "/\\") . "/";
 // Can Be Set Manually Like "http://localhost/mysite/".
 define("SITE_ADDR", $site_addr);
 
-define("APP_ID", "a8c29a1eeaa9abe403c53d5b6463458c");
+define("APP_ID", "dde86ff44d929aaccbc2e3098f5dddd6");
 
 // Application Default Color (Mostly Used By Mobile)
 define("META_THEME_COLOR", "#000000");

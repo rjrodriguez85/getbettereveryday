@@ -15,7 +15,7 @@ $show_header = $this->show_header;
 $show_footer = $this->show_footer;
 $show_pagination = $this->show_pagination;
 ?>
-<section class="page" id="<?php echo $page_element_id; ?>" data-page-type="list"  data-display-type="table" data-page-url="<?php print_link($current_page); ?>">
+<section class="page ajax-page" id="<?php echo $page_element_id; ?>" data-page-type="list"  data-display-type="table" data-page-url="<?php print_link($current_page); ?>">
     <?php
     if( $show_header == true ){
     ?>
@@ -104,8 +104,9 @@ $show_pagination = $this->show_pagination;
                         <div  class=" animated fadeIn page-content">
                             <div id="to_dos-list-records">
                                 <div id="page-report-body" class="table-responsive">
-                                    <table class="table  table-striped table-sm text-left">
-                                        <thead class="table-header bg-light">
+                                    <?php Html::ajaxpage_spinner(); ?>
+                                    <table class="table table-hover table-striped text-center table-bordered">
+                                        <thead class="table-header bg-primary text-white">
                                             <tr>
                                                 <th class="td-checkbox">
                                                     <label class="custom-control custom-checkbox custom-control-inline">
@@ -114,8 +115,7 @@ $show_pagination = $this->show_pagination;
                                                     </label>
                                                 </th>
                                                 <th class="td-sno">#</th>
-                                                <th  class="td-todos_id"> <?php print_lang('todos_id'); ?></th>
-                                                <th  class="td-ntbd"> <?php print_lang('ntbd'); ?></th>
+                                                <th  class="td-ntbd"> <?php print_lang('needs_to_be_done'); ?></th>
                                                 <th  class="td-status"> <?php print_lang('status'); ?></th>
                                                 <th  class="td-remaks"> <?php print_lang('remaks'); ?></th>
                                                 <th  class="td-start_date"> <?php print_lang('start_date'); ?></th>
@@ -142,13 +142,12 @@ $show_pagination = $this->show_pagination;
                                                         </label>
                                                     </th>
                                                     <th class="td-sno"><?php echo $counter; ?></th>
-                                                    <td class="td-todos_id"><a href="<?php print_link("to_dos/view/$data[todos_id]") ?>"><?php echo $data['todos_id']; ?></a></td>
                                                     <td class="td-ntbd">
                                                         <span  data-value="<?php echo $data['ntbd']; ?>" 
                                                             data-pk="<?php echo $data['todos_id'] ?>" 
                                                             data-url="<?php print_link("to_dos/editfield/" . urlencode($data['todos_id'])); ?>" 
                                                             data-name="ntbd" 
-                                                            data-title="Enter Ntbd" 
+                                                            data-title="Enter Needs to be done" 
                                                             data-placement="left" 
                                                             data-toggle="click" 
                                                             data-type="text" 
@@ -188,24 +187,9 @@ $show_pagination = $this->show_pagination;
                                                             <?php echo $data['remaks']; ?> 
                                                         </span>
                                                     </td>
-                                                    <td class="td-start_date">
-                                                        <span  data-flatpickr="{ minDate: '', maxDate: ''}" 
-                                                            data-value="<?php echo $data['start_date']; ?>" 
-                                                            data-pk="<?php echo $data['todos_id'] ?>" 
-                                                            data-url="<?php print_link("to_dos/editfield/" . urlencode($data['todos_id'])); ?>" 
-                                                            data-name="start_date" 
-                                                            data-title="Enter Start Date" 
-                                                            data-placement="left" 
-                                                            data-toggle="click" 
-                                                            data-type="flatdatetimepicker" 
-                                                            data-mode="popover" 
-                                                            data-showbuttons="left" 
-                                                            class="is-editable" >
-                                                            <?php echo $data['start_date']; ?> 
-                                                        </span>
-                                                    </td>
+                                                    <td class="td-start_date"> <?php echo $data['start_date']; ?></td>
                                                     <td class="td-end_date">
-                                                        <span  data-flatpickr="{ minDate: '', maxDate: ''}" 
+                                                        <span  data-flatpickr="{ enableTime: false, minDate: '', maxDate: ''}" 
                                                             data-value="<?php echo $data['end_date']; ?>" 
                                                             data-pk="<?php echo $data['todos_id'] ?>" 
                                                             data-url="<?php print_link("to_dos/editfield/" . urlencode($data['todos_id'])); ?>" 
@@ -220,18 +204,24 @@ $show_pagination = $this->show_pagination;
                                                             <?php echo $data['end_date']; ?> 
                                                         </span>
                                                     </td>
-                                                    <th class="td-btn">
-                                                        <a class="btn btn-sm btn-success has-tooltip" title="<?php print_lang('view_record'); ?>" href="<?php print_link("to_dos/view/$rec_id"); ?>">
-                                                            <i class="fa fa-eye"></i> <?php print_lang('view'); ?>
-                                                        </a>
-                                                        <a class="btn btn-sm btn-info has-tooltip" title="<?php print_lang('edit_this_record'); ?>" href="<?php print_link("to_dos/edit/$rec_id"); ?>">
-                                                            <i class="fa fa-edit"></i> <?php print_lang('edit'); ?>
-                                                        </a>
-                                                        <a class="btn btn-sm btn-danger has-tooltip record-delete-btn" title="<?php print_lang('delete_this_record'); ?>" href="<?php print_link("to_dos/delete/$rec_id/?csrf_token=$csrf_token&redirect=$current_page"); ?>" data-prompt-msg="Are you sure you want to delete this record?" data-display-style="modal">
-                                                            <i class="fa fa-times"></i>
-                                                            <?php print_lang('delete'); ?>
-                                                        </a>
-                                                    </th>
+                                                    <td class="page-list-action td-btn">
+                                                        <div class="dropdown" >
+                                                            <button data-toggle="dropdown" class="dropdown-toggle btn btn-primary btn-sm">
+                                                                <i class="fa fa-bars"></i> 
+                                                            </button>
+                                                            <ul class="dropdown-menu">
+                                                                <a class="dropdown-item page-modal" href="<?php print_link("to_dos/view/$rec_id"); ?>">
+                                                                    <i class="fa fa-eye"></i> <?php print_lang('view'); ?> 
+                                                                </a>
+                                                                <a class="dropdown-item page-modal" href="<?php print_link("to_dos/edit/$rec_id"); ?>">
+                                                                    <i class="fa fa-edit"></i> <?php print_lang('edit'); ?>
+                                                                </a>
+                                                                <a  class="dropdown-item record-delete-btn" href="<?php print_link("to_dos/delete/$rec_id/?csrf_token=$csrf_token&redirect=$current_page"); ?>" data-prompt-msg="Are you sure you want to delete this record?" data-display-style="modal">
+                                                                    <i class="fa fa-times"></i> <?php print_lang('delete'); ?> 
+                                                                </a>
+                                                            </ul>
+                                                        </div>
+                                                    </td>
                                                 </tr>
                                                 <?php 
                                                 }
@@ -303,6 +293,7 @@ $show_pagination = $this->show_pagination;
                                                                     $pager->limit_count = $this->limit_count;
                                                                     $pager->show_page_number_list = true;
                                                                     $pager->pager_link_range=5;
+                                                                    $pager->ajax_page = true;
                                                                     $pager->render();
                                                                     }
                                                                     ?>

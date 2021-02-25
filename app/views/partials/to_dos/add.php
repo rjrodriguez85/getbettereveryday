@@ -34,11 +34,11 @@ $redirect_to = $this->redirect_to;
                                 <div class="form-group ">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="control-label" for="ntbd"><?php print_lang('ntbd'); ?> <span class="text-danger">*</span></label>
+                                            <label class="control-label" for="ntbd"><?php print_lang('needs_to_be_done'); ?> <span class="text-danger">*</span></label>
                                         </div>
                                         <div class="col-sm-8">
                                             <div class="">
-                                                <input id="ctrl-ntbd"  value="<?php  echo $this->set_field_value('ntbd',""); ?>" type="text" placeholder="<?php print_lang('enter_ntbd'); ?>"  required="" name="ntbd"  class="form-control " />
+                                                <input id="ctrl-ntbd"  value="<?php  echo $this->set_field_value('ntbd',""); ?>" type="text" placeholder="<?php print_lang('enter_needs_to_be_done'); ?>"  required="" name="ntbd"  class="form-control " />
                                                 </div>
                                             </div>
                                         </div>
@@ -74,7 +74,7 @@ $redirect_to = $this->redirect_to;
                                                     </div>
                                                     <div class="col-sm-8">
                                                         <div class="input-group">
-                                                            <input id="ctrl-start_date" class="form-control datepicker  datepicker" required="" value="<?php  echo $this->set_field_value('start_date',""); ?>" type="datetime"  name="start_date" placeholder="<?php print_lang('enter_start_date'); ?>" data-enable-time="true" data-min-date="" data-max-date="" data-date-format="Y-m-d H:i:S" data-alt-format="F j, Y - H:i" data-inline="false" data-no-calendar="false" data-mode="single" /> 
+                                                            <input id="ctrl-start_date" class="form-control datepicker  datepicker"  required="" value="<?php  echo $this->set_field_value('start_date',""); ?>" type="datetime" name="start_date" placeholder="<?php print_lang('enter_start_date'); ?>" data-enable-time="false" data-min-date="" data-max-date="" data-date-format="Y-m-d" data-alt-format="F j, Y" data-inline="false" data-no-calendar="false" data-mode="single" />
                                                                 <div class="input-group-append">
                                                                     <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                                                                 </div>
@@ -89,7 +89,7 @@ $redirect_to = $this->redirect_to;
                                                         </div>
                                                         <div class="col-sm-8">
                                                             <div class="input-group">
-                                                                <input id="ctrl-end_date" class="form-control datepicker  datepicker" required="" value="<?php  echo $this->set_field_value('end_date',""); ?>" type="datetime"  name="end_date" placeholder="<?php print_lang('enter_end_date'); ?>" data-enable-time="true" data-min-date="" data-max-date="" data-date-format="Y-m-d H:i:S" data-alt-format="F j, Y - H:i" data-inline="false" data-no-calendar="false" data-mode="single" /> 
+                                                                <input id="ctrl-end_date" class="form-control datepicker  datepicker"  required="" value="<?php  echo $this->set_field_value('end_date',""); ?>" type="datetime" name="end_date" placeholder="<?php print_lang('enter_end_date'); ?>" data-enable-time="false" data-min-date="" data-max-date="" data-date-format="Y-m-d" data-alt-format="F j, Y" data-inline="false" data-no-calendar="false" data-mode="single" />
                                                                     <div class="input-group-append">
                                                                         <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                                                                     </div>
